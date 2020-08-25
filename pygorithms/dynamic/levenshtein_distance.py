@@ -36,3 +36,39 @@ def levenshtein_distance_simple(str1: str, str2: str) -> int:
                 )
 
     return edits[-1][-1]
+
+
+def levenshtein_distance(str1: str, str2: str) -> int:
+    """
+    Complexity:
+    Time:
+        O(nm)
+    Space:
+        O(min(m, n))
+    """
+    small, big = sorted((str1, str2), key=len)
+
+    even_edits = [x for x in range(len(small) + 1)]
+    odd_edits = [None for _ in range(len(small) + 1)]
+
+    for i in range(1, len(big) + 1):
+        if i % 2 == 1:
+            prev = even_edits
+            curr = odd_edits
+        else:
+            prev = odd_edits
+            curr = even_edits
+
+        curr[0] = i
+
+        for j in range(1, len(small) + 1):
+            if big[i - 1] == small[j - 1]:
+                curr[j] = prev[j - 1]
+            else:
+                curr[j] = 1 + min(
+                    prev[j - 1],
+                    prev[j],
+                    curr[j - 1],
+                )
+
+    return even_edits[-1] if len(big) % 2 == 0 else odd_edits[-1]
