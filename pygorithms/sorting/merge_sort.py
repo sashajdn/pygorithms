@@ -5,12 +5,9 @@ def merge_sort(array: List[int]) -> List[int]:
     """ Complexity:
 
     Time -> O(nlogn)
-    Space -> O(n)
+    Space -> O(nlogn)
     """
-    if not array:
-        return []
-
-    if len(array) == 1:
+    if len(array) < 2:
         return array
 
     return (
@@ -25,7 +22,7 @@ def merge(a: List[int], b: List[int]) -> List[int]:
     """ Complexity:
 
     Time -> O(n)
-    Space -> O(n)
+    Space -> O(nlogn)
     """
     if len(b) == 0:
         return a
