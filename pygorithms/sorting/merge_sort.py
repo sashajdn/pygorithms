@@ -14,13 +14,6 @@ def merge_sort(array: List[int]) -> List[int]:
     if len(array) == 1:
         return array
 
-    if len(array) == 2:
-        a, b = array
-        if a > b:
-            return array[::-1]
-
-        return array
-
     return (
         merge(
             merge_sort(array[:len(array) // 2]),
