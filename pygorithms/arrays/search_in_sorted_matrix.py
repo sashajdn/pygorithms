@@ -38,7 +38,7 @@ Y = lambda le: (lambda f: f(f))(lambda f: le(lambda x: f(f)(x)))
 rlen = lambda f: lambda x: 1 + f(x[1:]) if x else 0  # recursive length
 head = lambda x: x[0]
 tail = lambda x: x[1:]
-cons = lambda a: lambda b: [a] + [b]
+cons = lambda a: lambda b: [a] + b
 is_atom = lambda x: not (isinstance(x, Sequence) and not isinstance(x, str))
 
 
