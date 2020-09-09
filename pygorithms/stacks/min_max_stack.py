@@ -15,7 +15,7 @@ class MinMaxStack:
         """T -> O(1), S -> O(1)."""
         return self._stack.pop()
 
-    def push(self, value: int):
+    def push(self, value: int) -> None:
         """T -> O(1), S -> O(1)."""
         if not self._stack:
             self._min.append(value)
